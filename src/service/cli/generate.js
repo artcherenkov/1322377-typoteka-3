@@ -2,6 +2,7 @@
 
 const fs = require(`fs`);
 const moment = require(`moment`);
+const chalk = require(`chalk`);
 
 const {randomDate, getRandomInt, shuffle} = require(`../../utils`);
 
@@ -81,17 +82,17 @@ module.exports = {
     const offersCount = Number.parseInt(count, 10) || DEFAULT_POSTS_COUNT;
 
     if (offersCount > MAX_POSTS_COUNT) {
-      console.error(`Не больше ${MAX_POSTS_COUNT} публикаций`);
+      console.error(chalk.red(`Не больше ${MAX_POSTS_COUNT} публикаций`));
       process.exit(1);
     }
 
     const content = JSON.stringify(generateOffers(offersCount));
     fs.writeFile(FILE_NAME, content, (err) => {
       if (err) {
-        return console.error(`Can't write data to file...`);
+        return console.error(chalk.red(`Can't write data to file...`));
       }
 
-      return console.info(`Operation success. File created.`);
+      return console.info(chalk.green(`Operation success. File created.`));
     });
 
   }
