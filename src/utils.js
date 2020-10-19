@@ -2,11 +2,7 @@
 
 const moment = require(`moment`);
 
-module.exports.randomDate = (start, end) => {
-  const unixStart = moment.unix(start) / 1000; // перевели мс в секунды
-  const unixEnd = moment.unix(end) / 1000;
-  return moment(unixStart + Math.random() * (unixEnd - unixStart));
-};
+module.exports.randomDate = (start, end) => moment(start + Math.random() * (end.diff(start)));
 
 module.exports.getRandomInt = (min, max) => {
   min = Math.ceil(min);
