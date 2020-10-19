@@ -27,6 +27,10 @@ const readContent = async (filePath) => {
 };
 
 const generateOffers = (count, titles, categories, sentences) => {
+  titles = titles.filter((title) => title !== ``);
+  categories = categories.filter((category) => category !== ``);
+  sentences = sentences.filter((sentence) => sentence !== ``);
+
   const ago = moment().subtract(MAX_MONTHS_GAP, `months`);
   const randomAnnounceLength = getRandomInt(1, 5);
   return Array(count).fill({}).map(() => ({
