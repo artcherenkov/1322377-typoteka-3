@@ -80,8 +80,8 @@ module.exports = {
 
     const offersCount = Number.parseInt(count, 10) || DEFAULT_POSTS_COUNT;
 
-    if (offersCount > 1000) {
-      console.error(`Не больше 1000 публикаций`);
+    if (offersCount > MAX_POSTS_COUNT) {
+      console.error(`Не больше ${MAX_POSTS_COUNT} публикаций`);
       process.exit(1);
     }
 
